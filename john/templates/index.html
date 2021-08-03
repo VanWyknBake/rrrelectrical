@@ -1,0 +1,275 @@
+{% load static %}
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+
+        <!-- ===== CSS ===== -->
+        <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+
+        <!-- ===== BOX ICONS ===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <title>Portfolio responsive complete</title>
+    </head>
+    <body>
+        <!--===== HEADER =====-->
+        <header class="l-header">
+            <nav class="nav bd-grid">
+                
+                <div>
+                    <a href="#" class="nav__logo">{{ home.name }}</a>
+                </div>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
+                        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                        <li class="nav__item"><a href="#skills" class="nav__link">Services</a></li>
+                        <li class="nav__item"><a href="#reviews" class="nav__link">Reviews</a></li>
+                        <li class="nav__item"><a href="#portfolio" class="nav__link">Gallery</a></li>
+                        
+
+                        <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                        
+                        </ul>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+
+        <main class="l-main">
+            <!--===== HOME =====-->
+            <section class="home" id="home">
+                <div class="home__container bd-grid">
+                    <h1 class="home__title"><span>&nbsp;{{ home.greetings_1 }}</span><br>{{ home.greetings_2 }}</h1>
+
+                    <div class="home__scroll">
+                        <a href="#about" class="home__scroll-link"><i class='bx bx-up-arrow-alt' ></i>Scroll down</a>
+                    </div>
+
+                    <img src="{{ home.picture.url }}" alt="" class="home__img">
+                </div>
+            </section>
+            
+            <!--===== ABOUT =====-->
+            <section class="about section" id="about">
+                <h2 class="section-title">About</h2>
+                {% for about in about %}
+
+                <div class="about__container bd-grid">
+                    <div class="about__img">
+                        <!-- <img src="{% static 'assets/img/perfil.png' %}" alt=""> -->
+                        <img src="{{ about.profile_img.url }}" alt="">
+                    </div>
+
+                    <div>
+                        <h2 class="about__subtitle">{{ about.heading }}</h2>
+                        <span class="about__profession">{{ about.career }}</span>
+                        <p class="about__text">{{ about.description }}</p>
+
+                        <div class="about__social">
+
+                            {% for profile in about.profile_set.all %}
+                                <a href="{{ profile.link }}" class="about__social-icon">
+                                    <i class='bx bxl-{{ profile.social_name }}' ></i>
+                                </a>
+                            {% endfor %}
+                            
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </section>
+
+            <!--===== SKILLS =====-->
+            <section class="skills section" id="skills">
+                <h2 class="section-title">Services</h2>
+
+                <div class="skills__container bd-grid">
+                    <div class="skills__box">
+                        {% for category in categories %}
+                        <h3 class="skills__subtitle">{{category.name}}</h3>
+                            {% for skills in category.skills_set.all %}
+                            
+                                <span class="skills__name">{{skills.skill_name}}</span>
+                            {% endfor %}
+                        {% endfor %}
+                        
+                    </div>
+
+                    <div class="skills__img text text-center">
+                        <img class="" src="{% static 'assets/img/vs.jpg' %}" alt=""style="text-align:center;">
+                    </div>
+                </div>
+            </section>
+
+            <section class="portfolio section" id="reviews" >
+            <h2 class="section-title ">Reviews</h2>
+
+            <div class="about__container bd-grid">
+                    
+                    
+                    
+                    <div class="" style="box-shadow:1px 1px 15px 1px black; padding:5px;">
+                        <iframe class="about__text" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ftawfeeq.floris.7%2Fposts%2F992370278182867&show_text=true&width=500" width="280" height="200" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+
+                        
+                    </div>
+                    <div class=""style="box-shadow:1px 1px 15px 1px black; padding:5px;">
+                        <iframe class="about__text" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fyumna.jappie%2Fposts%2F5147920705222845&show_text=true&width=500" width="280" height="200" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    </div>
+                    <div class=""style="box-shadow:1px 1px 15px 1px black; padding:5px;">
+                        <iframe class="about__text" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fnicole.bomestertremble.1%2Fposts%2F133969245520065&show_text=true&width=500" width="280" height="294" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                        
+                    </div>
+                    <div class=""style="box-shadow:1px 1px 15px 1px black; padding:5px;">
+                        <iframe class="about__text" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fsergio.pieters%2Fposts%2F4044630495592474&show_text=true&width=500" width="280" height="200" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    </div>
+                    
+
+                    
+                    
+                </div>
+               
+    
+                
+            </section>
+
+            <!--===== PORTFOLIO =====-->
+            <section class="portfolio section" id="portfolio">
+            <h2 class="section-title">Some photos of our work!</h2>
+
+            <div class="portfolio__container bd-grid">
+                    
+                    {% for portfolio in portfolios %}
+                    
+                    <div class="portfolio__img">
+                        <img src="{{ portfolio.image.url }}" alt="" style="width:200px;">
+
+                        <div class="portfolio__link">
+                            <a href="{{ portfolio.image.url }}" class="portfolio__link-name"><i class="bx bx-image"></i> View</a>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                    
+                </div>
+
+                </section>
+
+            <!--===== CONTACT =====-->
+            <section class="contact section" id="contact" style="text-align:center;">
+                <h2 class="section-title">Contact Us</h2>
+
+                <div class="contact__container bd-grid">
+                    <div class="contact__info">
+                        <h3 class="contact__subtitle">EMAIL</h3>
+                        <span class="contact__text"><a href = "mailto: rrrelectricalptyltd@gmail.com">rrrelectricalptyltd@gmail.com</a></span>
+<!-- 
+                        <h3 class="contact__subtitle">PHONE</h3>
+                        <span class="contact__text">+20 999-999</span>
+
+                        <h3 class="contact__subtitle">ADRESS</h3>
+                        <span class="contact__text">My contry</span> -->
+                    </div>
+
+                    <div class="contact__info">
+                    
+                        <h3 class="contact__subtitle">PHONE</h3>
+                        
+                        <span class="contact__text">+27 735 686 070<br>+27 834 494 440</span>
+                        
+                        
+                    </div>
+                    
+
+                   </div>
+                   
+
+                    </section>
+                    
+           
+        <!--===== FOOTER =====-->
+        <footer class="footer section">
+            <div class="footer__container bd-grid "style="text-align:center;">
+                <div class="footer__data">
+                    <h2 class="footer__title">RRR ELECTRICAL</h2>
+                    <p class="footer__text">- Bring our unparalleled service to your project!
+
+</p>
+                </div>
+
+                <div class="footer__data">
+                    <h2 class="footer__title">EXPLORE</h2>
+                    <ul>
+                        <li><a href="#home" class="footer__link">Home</a></li>
+                        <li><a href="#about" class="footer__link">About</a></li>
+                        <li><a href="#skills" class="footer__link">Sevices</a></li>
+                        <li><a href="#portfolio" class="footer__link">Gallery</a></li>
+                        <li><a href="#Contact" class="footer__link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__data">
+                    <h2 class="footer__title">FOLLOW US</h2>
+                    <a href="https://www.facebook.com/RRRELECTRICAL/" class="footer__social"><i class='bx bxl-facebook' ></i></a>
+                    <a href="https://www.linkedin.com/in/rahyan-mcnaughton-697688209" class="footer__social"><i class='bx bxl-linkedin' ></i></a>
+                </div>
+                
+
+            </div><br><br>
+            <small><p style="text-align:center;"> Copyright &copy; 2021 RRR ELECTRICAL - ALL RIGHTS RESERVED</p></small>
+        </footer>
+
+        <!--===== SCROLL REVEAL =====-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--===== MAIN JS =====-->
+        <script src="{% static 'assets/js/main.js' %}"></script>
+
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<a href="https://api.whatsapp.com/send/?phone=27735686070&text&app_absent=0"
+   		 class="float" target="_blank">
+<i class="fa fa-whatsapp my-float"></i>
+
+</a>
+
+
+<!-- CSS -->
+<style>
+.float:hover {
+    background-color:#FFF;
+	color:#25d366;
+}
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px black;
+  z-index:100;
+}
+
+.my-float{
+	margin-top:16px;
+}
+ </style>
+
+     
+
+    </body>
+</html>
